@@ -27,19 +27,19 @@ datagen = ImageDataGenerator(
                     validation_split = 0.2)
 train_generator = datagen.flow_from_directory(
     path_dir,
-    target_size=(65,87),
+    target_size=(150, 150),
     shuffle=True,
     subset='training'
 )
 validation_generator = datagen.flow_from_directory(
     path_dir,
-    target_size=(65,87),
+    target_size=(150, 150),
     subset='validation'
 )
 
 model = tf.keras.models.Sequential([
     #first_convolution
-    tf.keras.layers.Conv2D(16, (3,3), activation='relu', input_shape=(65, 87, 3)),
+    tf.keras.layers.Conv2D(16, (3,3), activation='relu', input_shape=(150, 150, 3)),
     tf.keras.layers.MaxPooling2D(2, 2),
     #second_convolution
     tf.keras.layers.Conv2D(32, (3,3), activation='relu'),
